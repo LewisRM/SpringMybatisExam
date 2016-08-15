@@ -1,11 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- Spring 整合 myBatis 后，这个配置文件基本可以不要了-->
-<!-- 设置外部配置文件 -->
-<!-- 设置类别名 -->
-<!-- 设置数据库连接环境 -->
-<!-- 映射文件 -->
+    <!-- 这种方式可以实现通过连接外部的数据库配置文件 -->
+    <properties resource="conf/jdbc.properties"/>
+    
+    
+    <!-- 第二种配置别名的方式，通过包名自己来配置 -->
+    <typeAliases>
+        <package name="org.lewis.SpringMybatisExam.Entity"/>
+    </typeAliases>
+    
+    
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"  value="${driver}" />
+				<property name="url" value="${dburl}" />
+				<property name="username" value="${name}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<!-- 如果是通过xml配置的方式，那么应该使用路径的方式 -->
+		<mapper resource="org/lewis/SpringMybatisExam/Mapper/CustomerXml.xml"/>
+	</mappers>	
 </configuration>
