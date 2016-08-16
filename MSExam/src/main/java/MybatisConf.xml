@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    
+    <!-- 第二种配置别名的方式，通过包名自己来配置 -->
+    <typeAliases>
+        <package name="Entity"/>
+    </typeAliases>
+    
+
+	
+	<mappers>
+		<!-- 如果是通过xml配置的方式，那么应该使用路径的方式 -->
+		<mapper resource="dto/CustomerXml.xml"/>
+		<mapper resource="dto/AddressXml.xml"/>
+	</mappers>	
+</configuration>
